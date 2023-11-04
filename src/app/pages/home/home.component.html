@@ -1,1 +1,14 @@
-<p>home works!</p>
+<div class="home">
+    <div class="flex gap-2">
+        <app-input
+            [placeholder]="placeholder"
+            [formControl]="username"
+        ></app-input>
+
+        <app-button
+            class="h-full"
+            [label]="buttonLabel"
+            (onClick)="SearchUsername()"
+        ></app-button>
+    </div>
+</div>

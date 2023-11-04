@@ -1,0 +1,9 @@
+.home {
+    @apply
+    grid
+    h-[200px] 
+    place-content-center;
+
+    background-image: url('../../../assets/images/bg-dark.jpg');
+    background-size: cover;
+}

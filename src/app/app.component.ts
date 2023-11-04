@@ -13,5 +13,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.apiService.getUser('johnpapa').subscribe(console.log);
+    this.apiService.getRepositories('hariom-ojha23').subscribe(console.log)
+    this.apiService.getLanguages("krati-portfolio", "hariom-ojha23").subscribe(console.log)
   }
 }
