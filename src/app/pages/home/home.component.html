@@ -18,7 +18,7 @@
     <!-- showing user card of searched user -->
     <div *ngIf="searchedUser" class="mb-5 flex flex-col items-center">
       <div class="grid-layout">
-        <app-user-cards [user]="searchedUser"></app-user-cards>
+        <app-user-card [user]="searchedUser"></app-user-card>
       </div>
     </div>
 
@@ -28,7 +28,7 @@
 
       <div class="mt-5 grid-layout">
         <div *ngFor="let user of recommendedUsers">
-          <app-user-cards [user]="user"></app-user-cards>
+          <app-user-card [user]="user"></app-user-card>
         </div>
       </div>
     </div>

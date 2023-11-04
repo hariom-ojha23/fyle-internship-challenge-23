@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-appbar',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./appbar.component.scss']
 })
 export class AppbarComponent {
-  title = 'Github Profiler'
+  @Input() title: string = ''
 }

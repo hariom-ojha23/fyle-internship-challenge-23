@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core'
 import { MaterialModule } from '../material/material.module';
-import { IconButtonComponent } from './icon-button/icon-button.component';
-import { AppbarComponent } from './appbar/appbar.component';
-import { ButtonComponent } from './button/button.component';
-import { InputComponent } from './input/input.component';
+import { IconButtonComponent } from './ui/icon-button/icon-button.component';
+import { AppbarComponent } from './ui/appbar/appbar.component';
+import { ButtonComponent } from './ui/button/button.component';
+import { InputComponent } from './ui/input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserCardsComponent } from './user-cards/user-cards.component';
+import { UserCardComponent } from './user-card/user-card.component';
+import { RepositoryCardComponent } from './repository-card/repository-card.component';
+import { ProfileHeaderComponent } from './profile-header/profile-header.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { CardComponent } from './ui/card/card.component';
 
 @NgModule({
     declarations: [
@@ -13,7 +17,11 @@ import { UserCardsComponent } from './user-cards/user-cards.component';
         ButtonComponent,
         IconButtonComponent,
         InputComponent,
-        UserCardsComponent
+        UserCardComponent,
+        RepositoryCardComponent,
+        ProfileHeaderComponent,
+        PaginationComponent,
+        CardComponent
     ],
     imports: [
         MaterialModule,
@@ -25,7 +33,10 @@ import { UserCardsComponent } from './user-cards/user-cards.component';
         ButtonComponent,
         IconButtonComponent,
         InputComponent,
-        UserCardsComponent
+        UserCardComponent,
+        ProfileHeaderComponent,
+        PaginationComponent,
+        CardComponent
     ]
 })
 export class ComponentsModule {}

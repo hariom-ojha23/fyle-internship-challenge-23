@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-cards',
-  templateUrl: './user-cards.component.html',
-  styleUrls: ['./user-cards.component.scss']
+  selector: 'app-user-card',
+  templateUrl: './user-card.component.html',
+  styleUrls: ['./user-card.component.scss']
 })
-export class UserCardsComponent {
+export class UserCardComponent {
   @Input() user: any
 
   constructor( private router: Router ) { }
