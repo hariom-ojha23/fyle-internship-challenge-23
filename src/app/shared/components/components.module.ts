@@ -10,6 +10,8 @@ import { RepositoryCardComponent } from './repository-card/repository-card.compo
 import { ProfileHeaderComponent } from './profile-header/profile-header.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CardComponent } from './ui/card/card.component';
+import { RouterModule } from '@angular/router';
+import { RepositoriesComponent } from './repositories/repositories.component';
 
 @NgModule({
     declarations: [
@@ -21,12 +23,14 @@ import { CardComponent } from './ui/card/card.component';
         RepositoryCardComponent,
         ProfileHeaderComponent,
         PaginationComponent,
-        CardComponent
+        CardComponent,
+        RepositoriesComponent
     ],
     imports: [
         MaterialModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        RouterModule.forRoot([])
     ],
     exports: [
         AppbarComponent,
@@ -36,7 +40,8 @@ import { CardComponent } from './ui/card/card.component';
         UserCardComponent,
         ProfileHeaderComponent,
         PaginationComponent,
-        CardComponent
+        CardComponent,
+        RepositoriesComponent
     ]
 })
 export class ComponentsModule {}

@@ -35,11 +35,19 @@ h6 {
 
     .links {
       @apply text-center 
-            flex 
-            items-center 
-            gap-2 
-            justify-center 
-            underline;
+            flex  
+            justify-center
+            items-center
+            gap-1
+            text-[13px];
+
+
+      .link-icon {
+        @apply
+        text-gray-700
+          text-[18px]
+          mt-2
+      }
     }
   }
 }
