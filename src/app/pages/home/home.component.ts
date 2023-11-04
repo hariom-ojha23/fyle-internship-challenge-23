@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { showWarningPopup } from 'src/app/utils/toast-mesage';
 
@@ -8,26 +8,44 @@ import { showWarningPopup } from 'src/app/utils/toast-mesage';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
-  buttonLabel = 'Search';
+export class HomeComponent implements OnInit {
+  buttonLabel: string = 'Search';
 
-  placeholder = 'Enter Username';
-  username = new FormControl('');
+  placeholder: string = 'Enter Username';
+  username: FormControl<string | null> = new FormControl('');
+
+  recommendedUsers: any = [];
+
+  searchedUser = null;
 
   constructor(private apiService: ApiService) {}
 
-  SearchUsername() {
-    this.buttonLabel = 'Searching...';
+  ngOnInit(): void {
+    this.fetchRecommenedeUsers();
+  }
 
+  fetchRecommenedeUsers(): void {
+    this.apiService.getRecommendedUserDetails().subscribe((res: any) => {
+      this.recommendedUsers = res;
+      console.log(res);
+    });
+  }
+
+  SearchUsername(): void {
     let value = this.username.value;
 
-    if (value && value.trim().length !== 0) {
-      this.apiService.getUser(value).subscribe(console.log);
-      this.buttonLabel = 'Search';
-    } else {
+    if (!value || value.trim().length === 0) {
       showWarningPopup('Username is required!').then(
         () => (this.buttonLabel = 'Search')
       );
+    } else {
+      this.buttonLabel = 'Searching...';
+
+      this.apiService.getUser(value!!).subscribe((res: any) => {
+        this.searchedUser = res;
+      });
+  
+      this.buttonLabel = 'Search';
     }
   }
 }

@@ -5,13 +5,15 @@ import { AppbarComponent } from './appbar/appbar.component';
 import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserCardsComponent } from './user-cards/user-cards.component';
 
 @NgModule({
     declarations: [
         AppbarComponent,
         ButtonComponent,
         IconButtonComponent,
-        InputComponent
+        InputComponent,
+        UserCardsComponent
     ],
     imports: [
         MaterialModule,
@@ -22,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         AppbarComponent,
         ButtonComponent,
         IconButtonComponent,
-        InputComponent
+        InputComponent,
+        UserCardsComponent
     ]
 })
 export class ComponentsModule {}

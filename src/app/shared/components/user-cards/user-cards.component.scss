@@ -1,0 +1,37 @@
+.card {
+    @apply
+    p-2
+    bg-gray-900
+    rounded-md
+    h-full
+    cursor-pointer;
+}
+
+.card-body {
+    @apply
+    grid
+    grid-cols-12 
+    gap-2;
+
+    .avatar-box {
+        @apply
+        col-span-12
+        md:col-span-4;
+    }
+
+    .details-box {
+        @apply
+        col-span-12 
+        md:col-span-8;
+    }
+}
+
+.light-text {
+    @apply
+    text-gray-200
+}
+
+h2, h5, h4 {
+    @apply
+    m-0;
+}

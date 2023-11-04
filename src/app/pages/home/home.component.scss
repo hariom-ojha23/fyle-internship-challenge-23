@@ -1,9 +1,36 @@
 .home {
     @apply
-    grid
-    h-[200px] 
-    place-content-center;
+    h-[calc(100vh-64px)];
 
-    background-image: url('../../../assets/images/bg-dark.jpg');
-    background-size: cover;
+
+    .header {
+        @apply
+        grid
+        h-[25%]
+        place-content-center
+        bg-[url('../../../assets/images/bg-dark.jpg')]
+        bg-cover;
+    }
+
+    .main {
+        @apply
+        min-h-[75%]
+        p-4
+        pb-10
+        flex
+        flex-col
+        items-center;
+
+        .grid-layout {
+            @apply
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            lg:grid-cols-3
+            gap-2
+            w-full
+            md:w-[90%]
+            lg:w-[80%]
+        }
+    }
 }

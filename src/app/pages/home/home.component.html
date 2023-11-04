@@ -1,14 +1,36 @@
 <div class="home">
+  <div class="header">
     <div class="flex gap-2">
-        <app-input
-            [placeholder]="placeholder"
-            [formControl]="username"
-        ></app-input>
+      <app-input
+        [placeholder]="placeholder"
+        [formControl]="username"
+      ></app-input>
 
-        <app-button
-            class="h-full"
-            [label]="buttonLabel"
-            (onClick)="SearchUsername()"
-        ></app-button>
+      <app-button
+        class="h-full"
+        [label]="buttonLabel"
+        (onClick)="SearchUsername()"
+      ></app-button>
     </div>
+  </div>
+
+  <div class="main">
+    <!-- showing user card of searched user -->
+    <div *ngIf="searchedUser" class="mb-5 flex flex-col items-center">
+      <div class="grid-layout">
+        <app-user-cards [user]="searchedUser"></app-user-cards>
+      </div>
+    </div>
+
+    <!-- showing user cards of few recommended users -->
+    <div class="mb-5 flex flex-col items-center">
+      <h1 class="!font-medium">Recommended Peoples</h1>
+
+      <div class="mt-5 grid-layout">
+        <div *ngFor="let user of recommendedUsers">
+          <app-user-cards [user]="user"></app-user-cards>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

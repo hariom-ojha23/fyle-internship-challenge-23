@@ -1,0 +1,26 @@
+<mat-card class="card" (click)="goToProfile()">
+  <div class="card-body">
+    <div class="avatar-box">
+      <img
+        [src]="user.avatar_url"
+        alt="avatar"
+        width="100%"
+        class="rounded-[4px]"
+      />
+    </div>
+    <div class="details-box">
+      <h2 class="text-white sm:text-sm lg:text-lg">{{ user.name }}</h2>
+      <h4 class="text-gray-400">{{ "@" + user.login }}</h4>
+
+      <div class="mt-2 flex gap-4">
+        <h5 class="light-text">Followers: {{ user.followers }}</h5>
+        <h5 class="light-text">Following: {{ user.following }}</h5>
+      </div>
+
+      <div class="mt-2 flex items-center">
+        <mat-icon class="text-red-500 h-5 w-5">location_pin</mat-icon>
+        <span class="mx-2 light-text text-sm">{{ user.location }}</span>
+      </div>
+    </div>
+  </div>
+</mat-card>
