@@ -1,1 +1,21 @@
-<p>repository-card works!</p>
+<app-card>
+  <div class="card-body">
+    <h3 class="card-title">{{ repository.name }}</h3>
+    <div class="card-text column mt-2">
+      <p *ngIf="repository.description" class="description">{{ repository.description }}</p>
+
+      <a [href]="repository.html_url" target="_blank" class="text-gray-400">
+        <h5 class="flex items-center gap-2">
+          <mat-icon >link</mat-icon>
+          {{ repository.html_url }}
+        </h5>
+      </a>
+    </div>
+
+    <div class="card-footer">
+      <div *ngFor="let language of languages" class="badge bg-teal-800">
+        <span>{{ language }}</span>
+      </div>
+    </div>
+  </div>
+</app-card>

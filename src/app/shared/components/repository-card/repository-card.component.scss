@@ -1,0 +1,42 @@
+.card-body {
+  @apply p-1;
+
+  .card-title {
+    @apply
+    text-white
+    uppercase
+    text-lg
+  }
+
+  .card-text {
+    .description {
+        @apply
+        text-gray-200
+        mb-2;
+    }
+  }
+
+  .card-footer {
+    @apply
+    flex
+    flex-wrap;
+
+    .badge {
+      @apply px-3
+        py-1
+        font-medium
+        text-[12px]
+        text-white
+        mt-2
+        rounded-md
+        mr-2;
+    }
+  }
+}
+
+h3,
+p,
+h5 {
+    @apply
+    m-0
+}

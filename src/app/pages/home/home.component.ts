@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   fetchRecommenedeUsers(): void {
     this.apiService.getRecommendedUserDetails().subscribe((res: any) => {
       this.recommendedUsers = res;
-      console.log(res);
     });
   }
 
