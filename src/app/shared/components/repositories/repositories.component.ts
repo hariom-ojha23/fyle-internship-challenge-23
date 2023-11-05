@@ -15,6 +15,8 @@ export class RepositoriesComponent implements OnInit {
   start: number = 1;
   limit: number = 10;
 
+  loadingCount = [1,2,3,4,5,6]
+
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {}

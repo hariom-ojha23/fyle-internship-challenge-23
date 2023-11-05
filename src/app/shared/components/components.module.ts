@@ -12,6 +12,8 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { CardComponent } from './ui/card/card.component';
 import { RouterModule } from '@angular/router';
 import { RepositoriesComponent } from './repositories/repositories.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonLoaderComponent } from './ui/skeleton-loader/skeleton-loader.component';
 
 @NgModule({
     declarations: [
@@ -24,13 +26,15 @@ import { RepositoriesComponent } from './repositories/repositories.component';
         ProfileHeaderComponent,
         PaginationComponent,
         CardComponent,
-        RepositoriesComponent
+        RepositoriesComponent,
+        SkeletonLoaderComponent
     ],
     imports: [
         MaterialModule,
         ReactiveFormsModule,
         FormsModule,
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        NgxSkeletonLoaderModule
     ],
     exports: [
         AppbarComponent,
@@ -41,7 +45,8 @@ import { RepositoriesComponent } from './repositories/repositories.component';
         ProfileHeaderComponent,
         PaginationComponent,
         CardComponent,
-        RepositoriesComponent
+        RepositoriesComponent,
+        SkeletonLoaderComponent
     ]
 })
 export class ComponentsModule {}

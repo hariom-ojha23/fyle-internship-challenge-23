@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class UserCardComponent {
   @Input() user: any
 
-  constructor( private router: Router ) { }
+  constructor(
+    @Inject(Router) private router: Router
+  ) { }
 
   goToProfile(): void {
     this.router.navigateByUrl(`/users/${this.user.login}`)

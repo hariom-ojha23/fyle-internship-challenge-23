@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -9,10 +9,11 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ProfileComponent implements OnInit {
   userData: any
+  loading = false
 
   constructor(
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute
+    @Inject(ActivatedRoute) private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -27,8 +28,11 @@ export class ProfileComponent implements OnInit {
   }
 
   getUserData(username: string) {
+    this.loading = true
+
     this.apiService.getUser(username).subscribe((res: any) => {
       this.userData = res
+      this.loading = false
     })
   }
 }

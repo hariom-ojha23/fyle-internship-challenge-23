@@ -16,19 +16,34 @@
 
   <div class="main">
     <!-- showing user card of searched user -->
-    <div *ngIf="searchedUser" class="mb-5 flex flex-col items-center">
+    <div class="mb-5 flex flex-col items-center w-full">
       <div class="grid-layout">
-        <app-user-card [user]="searchedUser"></app-user-card>
+        <app-skeleton-loader
+          *ngIf="searching"
+          height="130px"
+        ></app-skeleton-loader>
+        
+        <app-user-card
+          *ngIf="searchedUser"
+          [user]="searchedUser"
+        ></app-user-card>
       </div>
     </div>
 
     <!-- showing user cards of few recommended users -->
-    <div class="mb-5 flex flex-col items-center">
+    <div class="mb-5 flex flex-col items-center w-full">
       <h1 class="!font-medium">Recommended Peoples</h1>
 
-      <div class="mt-5 grid-layout">
+      <div class="mt-3 grid-layout">
+        <div *ngFor="let item of loadingCount">
+          <app-skeleton-loader
+            *ngIf="loading"
+            height="130px"
+          ></app-skeleton-loader>
+        </div>
+
         <div *ngFor="let user of recommendedUsers">
-          <app-user-card [user]="user"></app-user-card>
+          <app-user-card *ngIf="!loading" [user]="user"></app-user-card>
         </div>
       </div>
     </div>
