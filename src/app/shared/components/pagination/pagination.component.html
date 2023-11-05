@@ -1,1 +1,28 @@
-<p>pagination works!</p>
+<ul class="flex gap-3">
+  <li>
+    <app-icon-button 
+      (onClick)="onPressPrev()" 
+      [disabled]="start === 1"
+    >
+      <mat-icon class="text-xl">keyboard_arrow_left</mat-icon>
+    </app-icon-button>
+  </li>
+
+  <li *ngFor="let item of boxRange(start)">
+    <app-icon-button 
+      [type]="page === item ? '' : 'outlined'"
+      (onClick)="emitSetPage(item)"
+    >
+      {{ item }}
+    </app-icon-button>
+  </li>
+
+  <li>
+    <app-icon-button 
+      (onClick)="onPressNext()"
+      [disabled]="start === total - (total % totalBox) + 1"
+    >
+      <mat-icon class="text-xl">keyboard_arrow_right</mat-icon>
+    </app-icon-button>
+  </li>
+</ul>

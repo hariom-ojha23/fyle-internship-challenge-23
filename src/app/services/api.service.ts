@@ -7,14 +7,17 @@ import { Observable, forkJoin, map, switchMap, tap, throwError } from 'rxjs';
 })
 export class ApiService {
   githubUrl: string = 'https://api.github.com';
+  token = '';
 
   constructor(private httpClient: HttpClient) { }
 
   getUser(username: string) {
-    return this.httpClient.get(`${this.githubUrl}/users/${username}`);
+    return this.httpClient.get(`${this.githubUrl}/users/${username}`, { headers: this.headers });
   }
 
   // implement getRepos method by referring to the documentation. Add proper types for the return type and params
+
+  headers = { Authorization: `token ${this.token}` }
 
   getRepositories(
     username: string,
@@ -37,19 +40,19 @@ export class ApiService {
 
     return this.httpClient
       .get(
-        `${this.githubUrl}/users/${username}/repos?page=${page}&per_page=${limit}`
+        `${this.githubUrl}/users/${username}/repos?page=${page}&per_page=${limit}`, { headers: this.headers }
       )
       .pipe(map((data) => ({ ...results, results: data })));
   }
 
   getLanguages(repositoryName: string, username: string) {
     return this.httpClient.get(
-      `${this.githubUrl}/repos/${username}/${repositoryName}/languages`
+      `${this.githubUrl}/repos/${username}/${repositoryName}/languages`, { headers: this.headers }
     );
   }
 
   getRecommendedUsers(): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${this.githubUrl}/users`);
+    return this.httpClient.get<any[]>(`${this.githubUrl}/users`, { headers: this.headers });
   }
 
   getRecommendedUserDetails(): Observable<any[]> {

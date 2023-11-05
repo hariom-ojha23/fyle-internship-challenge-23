@@ -1,0 +1,19 @@
+.icon-button {
+    @apply
+    shadow-none
+    hover:shadow-none
+    focus:shadow-none;
+}
+
+
+.mat-mdc-mini-fab {
+    &.outlined-mini-fab {
+        @apply
+        bg-white
+        border-2
+        border-solid
+        border-primary-pink
+        text-primary-pink
+        font-medium;
+    }
+}

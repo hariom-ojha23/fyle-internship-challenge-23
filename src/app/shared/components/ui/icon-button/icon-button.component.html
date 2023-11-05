@@ -1,3 +1,18 @@
-<button mat-icon-button color="primary">
-    <ng-content></ng-content>
+<button
+    *ngIf="disabled"
+    mat-mini-fab 
+    class="icon-button bg-gray-700" 
+>
+  <ng-content></ng-content>
+</button>
+
+<button
+    *ngIf="!disabled"
+    mat-mini-fab 
+    color="primary"
+    class="icon-button" 
+    [ngClass]="type === 'outlined' ? 'outlined-mini-fab' : ''"
+    (click)="click($event)"
+>
+  <ng-content></ng-content>
 </button>

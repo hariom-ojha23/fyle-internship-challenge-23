@@ -1,5 +1,5 @@
 .repo-container-scroll {
     @apply
-    h-[calc(100%-100px)]
-    overflow-y-scroll;
+    h-[calc(100%-80px)]
+    overflow-y-auto;
 }
