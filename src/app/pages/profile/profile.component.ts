@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { UserData } from 'src/app/shared/types/custom-types';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  userData: any
+  userData: UserData | undefined
   loading = false
 
   constructor(
@@ -21,7 +22,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getUrlParam() {
-    this.activatedRoute.paramMap.subscribe((params) => {
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       let username = params.get('username');
       if (username) this.getUserData(username)
     });
@@ -30,8 +31,8 @@ export class ProfileComponent implements OnInit {
   getUserData(username: string) {
     this.loading = true
 
-    this.apiService.getUser(username).subscribe((res: any) => {
-      this.userData = res
+    this.apiService.getUser(username).subscribe((data: UserData) => {
+      this.userData = data
       this.loading = false
     })
   }

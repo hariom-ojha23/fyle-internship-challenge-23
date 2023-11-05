@@ -2,6 +2,7 @@
   <div class="header">
     <div class="flex gap-2">
       <app-input
+        (onPressEnter)="searchUsername()"
         [placeholder]="placeholder"
         [formControl]="username"
       ></app-input>
@@ -9,7 +10,7 @@
       <app-button
         class="h-full"
         [label]="buttonLabel"
-        (onClick)="SearchUsername()"
+        (onClick)="searchUsername()"
       ></app-button>
     </div>
   </div>

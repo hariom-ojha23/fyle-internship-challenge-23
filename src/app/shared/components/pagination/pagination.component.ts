@@ -7,8 +7,6 @@ import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@a
 })
 export class PaginationComponent implements OnInit {
   @Input() page: number = 1;
-  @Input() next: number = 1;
-  @Input() previous: number = 1;
   @Input() total: number = 1;
   @Input() start: number = 1;
 

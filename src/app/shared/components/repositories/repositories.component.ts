@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { Repository, UserData } from '../../types/custom-types';
 
 @Component({
   selector: 'app-repositories',
@@ -7,9 +8,9 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./repositories.component.scss'],
 })
 export class RepositoriesComponent implements OnInit {
-  @Input() userData: any;
+  @Input() userData: UserData | undefined;
 
-  repositories: any = null;
+  repositories: Repository[] | null = null;
   loading: boolean = false;
   page: number = 1;
   start: number = 1;
@@ -27,16 +28,16 @@ export class RepositoriesComponent implements OnInit {
     }
   }
 
-  fetchAllRepositories(page: number) {
-    let totalRepos = this.userData.public_repos;
-    let limit = this.limit;
+  fetchAllRepositories(page: number): void {
+    if (!this.userData) return
 
+    let limit = this.limit;
     this.loading = true;
 
     this.apiService
-      .getRepositories(this.userData.login, totalRepos, page, limit)
-      .subscribe((res: any) => {
-        this.repositories = res.results;
+      .getRepositories(this.userData.login, page, limit)
+      .subscribe((data: Repository[]) => {
+        this.repositories = data;
         this.loading = false;
       });
   }
@@ -51,8 +52,11 @@ export class RepositoriesComponent implements OnInit {
   }
 
   getTotal() {
+
     let userData = this.userData;
     let limit = this.limit;
+
+    if (!userData) return 0;
 
     let value: number = userData?.public_repos / 6;
 

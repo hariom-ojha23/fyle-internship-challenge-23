@@ -1,13 +1,13 @@
 <app-card>
   <div class="card-body">
-    <h3 class="card-title">{{ repository.name }}</h3>
+    <h3 class="card-title">{{ repository?.name }}</h3>
     <div class="card-text column mt-2">
-      <p *ngIf="repository.description" class="description">{{ repository.description }}</p>
+      <p *ngIf="repository?.description" class="description">{{ repository?.description }}</p>
 
-      <a [href]="repository.html_url" target="_blank" class="text-gray-400">
+      <a [href]="repository?.html_url" target="_blank" class="text-gray-400">
         <h5 class="flex items-center gap-2 break-all">
           <mat-icon >link</mat-icon>
-          {{ repository.html_url }}
+          {{ repository?.html_url }}
         </h5>
       </a>
     </div>

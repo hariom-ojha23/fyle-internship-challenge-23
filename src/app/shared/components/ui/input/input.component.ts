@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -9,4 +9,10 @@ import { FormControl } from '@angular/forms';
 export class InputComponent {
   @Input() placeholder: string = ''
   @Input() formControl: FormControl = new FormControl('')
+
+  @Output() onPressEnter = new EventEmitter()
+
+  emitEnterClick() {
+    this.onPressEnter.emit()
+  }
 }

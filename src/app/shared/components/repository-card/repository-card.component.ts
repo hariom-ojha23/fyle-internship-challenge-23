@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { Repository } from '../../types/custom-types';
 
 @Component({
   selector: 'app-repository-card',
@@ -7,21 +8,23 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./repository-card.component.scss']
 })
 export class RepositoryCardComponent implements OnInit {
-  @Input() repository: any
+  @Input() repository: Repository | undefined
 
-  languages: any[] = []
+  languages: string[] = []
   loading: boolean = false
 
   constructor( private apiService: ApiService ) { }
 
   ngOnInit(): void { this.fetchLanguages() }
 
-  fetchLanguages() {
+  fetchLanguages(): void {
     let repo = this.repository
     this.loading = true
 
-    this.apiService.getLanguages(repo.name, repo.owner.login).subscribe((res: any) => {
-      this.languages = Object.keys(res)
+    if (!repo) return
+
+    this.apiService.getLanguages(repo.name, repo.owner.login).subscribe((data: string[]) => {
+      this.languages = data
       this.loading = false
     })
   }

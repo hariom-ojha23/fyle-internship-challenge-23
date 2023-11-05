@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserData } from '../../types/custom-types';
 
 @Component({
   selector: 'app-profile-header',
@@ -6,6 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./profile-header.component.scss']
 })
 export class ProfileHeaderComponent {
-  @Input() userData: any
+  @Input() userData: UserData | undefined
   @Input() loading: boolean = false
 }

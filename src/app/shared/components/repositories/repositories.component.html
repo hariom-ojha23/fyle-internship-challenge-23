@@ -17,13 +17,11 @@
   </div>
 </div>
 
-  <app-pagination
-    class="flex justify-center items-center h-[100px]"
-    (setPage)="setPage($event)"
-    (setStart)="setStart($event)"
-    [page]="page"
-    [start]="start"
-    [next]="repositories?.next"
-    [previous]="repositories?.previous"
-    [total]="getTotal()"
-  ></app-pagination>
+<app-pagination
+  class="flex justify-center items-center h-[100px]"
+  (setPage)="setPage($event)"
+  (setStart)="setStart($event)"
+  [page]="page"
+  [start]="start"
+  [total]="getTotal()"
+></app-pagination>
