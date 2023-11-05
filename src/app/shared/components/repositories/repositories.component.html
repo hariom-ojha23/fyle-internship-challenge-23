@@ -1,4 +1,4 @@
-<div className="mt-5 mb-3" *ngIf="loading">
+<div class="mt-5 mb-3" *ngIf="loading">
     <div class="grid grid-cols-12 gap-2">
       <div class="col-span-6" *ngFor="let repository of repositories">
         Loading
@@ -6,9 +6,9 @@
     </div>
   </div>
 
-<div className="mt-5 mb-3" *ngIf="!loading">
+<div class="repo-container-scroll" *ngIf="!loading">
   <div class="grid grid-cols-12 gap-2">
-    <div class="col-span-6" *ngFor="let repository of repositories">
+    <div class="col-span-12 md:col-span-6" *ngFor="let repository of repositories">
       <app-repository-card
         class=""
         [repository]="repository"
@@ -16,3 +16,7 @@
     </div>
   </div>
 </div>
+
+<app-pagination
+  
+></app-pagination>

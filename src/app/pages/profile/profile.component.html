@@ -5,9 +5,8 @@
                 <app-profile-header [userData]="userData"></app-profile-header>
             </div>
 
-            <div class="col-span-12 lg:col-span-9 p-4">
-                <h1>Repositories</h1>
-                <app-repositories [userData]="userData"></app-repositories>
+            <div class="col-span-12 lg:col-span-9 p-4 h-[calc(100vh-64px)] overflow-hidden">
+                <app-repositories class="repo-container block" [userData]="userData"></app-repositories>
             </div>
         </div>
     </div>

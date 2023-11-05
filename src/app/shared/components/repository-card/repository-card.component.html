@@ -5,7 +5,7 @@
       <p *ngIf="repository.description" class="description">{{ repository.description }}</p>
 
       <a [href]="repository.html_url" target="_blank" class="text-gray-400">
-        <h5 class="flex items-center gap-2">
+        <h5 class="flex items-center gap-2 break-all">
           <mat-icon >link</mat-icon>
           {{ repository.html_url }}
         </h5>

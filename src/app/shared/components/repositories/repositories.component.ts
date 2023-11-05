@@ -34,7 +34,7 @@ export class RepositoriesComponent implements OnInit {
     this.apiService
       .getRepositories(this.userData.login, totalRepos, page, limit)
       .subscribe((res: any) => {
-        this.repositories = res
+        this.repositories = res.results
         this.loading = false
       });
   }
