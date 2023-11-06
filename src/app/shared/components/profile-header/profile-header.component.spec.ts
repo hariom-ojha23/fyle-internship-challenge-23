@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileHeaderComponent } from './profile-header.component';
+import { ComponentsModule } from '../components.module';
 
 describe('ProfileHeaderComponent', () => {
   let component: ProfileHeaderComponent;
@@ -8,7 +9,8 @@ describe('ProfileHeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfileHeaderComponent]
+      declarations: [ProfileHeaderComponent],
+      imports: [ComponentsModule]
     });
     fixture = TestBed.createComponent(ProfileHeaderComponent);
     component = fixture.componentInstance;

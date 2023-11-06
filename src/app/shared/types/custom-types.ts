@@ -1,7 +1,7 @@
 export interface UserData {
     avatar_url: string
-    bio: string
-    blog: string
+    bio: string | null
+    blog: string | null
     followers: number
     following: number
     location: string

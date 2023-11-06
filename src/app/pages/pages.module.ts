@@ -13,6 +13,6 @@ import { CommonModule } from '@angular/common';
         CommonModule,
         ComponentsModule,
     ],
-    exports: []
+    exports: [],
 })
 export class PagesModule { }

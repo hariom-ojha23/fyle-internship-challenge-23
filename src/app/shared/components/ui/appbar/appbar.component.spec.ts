@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppbarComponent } from './appbar.component';
+import { MaterialModule } from 'src/app/shared/material/material.module';
 
 describe('AppbarComponent', () => {
   let component: AppbarComponent;
@@ -8,7 +9,8 @@ describe('AppbarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppbarComponent]
+      declarations: [AppbarComponent],
+      imports: [MaterialModule]
     });
     fixture = TestBed.createComponent(AppbarComponent);
     component = fixture.componentInstance;

@@ -12,6 +12,10 @@ module.exports = {
     textColor: theme => ({
       ...theme('colors'),
       'primary-pink': '#c2185b',
+    }),
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'primary-pink': '#c2185b'
     })
   },
   plugins: [],

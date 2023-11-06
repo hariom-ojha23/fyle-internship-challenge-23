@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  appbarTitle = 'Github Profiler'
+  title = 'fyle-frontend-challenge'
 
   constructor() {}
 

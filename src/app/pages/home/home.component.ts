@@ -31,38 +31,49 @@ export class HomeComponent implements OnInit {
   fetchRecommenedeUsers(): void {
     this.loading = true;
 
-    this.apiService.getRecommendedUserDetails().subscribe((data: UserData[]) => {
-      this.recommendedUsers = data;
-      this.loading = false;
+    this.apiService.getRecommendedUserDetails().subscribe({
+      next: (data: UserData[]) => {
+        this.recommendedUsers = data;
+      },
+      error: (error) => {
+        showErrorPopup('Error fetching recommended users')
+        console.error('Error fetching recommended user details:', error);
+      },
+      complete: () => {
+        this.loading = false
+      }
     });
   }
 
   searchUsername(): void {
-    let value: string | null = this.username.value;
     this.searching = true;
     this.searchedUser = null;
+    
+    let value = this.username.value
+    let isValid = this.validateUserInput(value)
 
-    if (!value || value.trim().length === 0) {
+    if (value && isValid) {
+      this.buttonLabel = 'Searching...';
+
+      this.apiService.getUser(value).subscribe({
+        next: (data: UserData) =>  this.searchedUser = data,
+        error: (error: any) => showErrorPopup(error.message),
+        complete: () => {
+          this.searching = false;
+          this.buttonLabel = 'Search';
+        },
+      });
+
+    } else {
       showWarningPopup('Username is required!').then(() => {
         this.buttonLabel = 'Search';
         this.searching = false;
       });
-    } else {
-      this.buttonLabel = 'Searching...';
-
-      this.apiService.getUser(value!!).subscribe(
-        (res: UserData) => {
-          this.searchedUser = res;
-          this.buttonLabel = 'Search';
-          this.searching = false;
-        },
-        (error: string) => {
-          showErrorPopup(error).then(() => {
-            this.searching = false;
-            this.buttonLabel = 'Search';
-          });
-        }
-      );
     }
+  }
+
+  validateUserInput(value: string | null) {
+    if ( value && value.trim().length !== 0) return true
+    else return false
   }
 }
