@@ -21,9 +21,14 @@ export class ErrorInterceptor implements HttpInterceptor {
           errorMessage = `Error Code: ${error.status}\nMessage: Not Found`
         } else {
           // Server-side error
-          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+          let message: string = error?.error?.message?.split('.')[0] || error.message
+
+          if (message.includes('API rate limit exceeded')) {
+            message = 'API rate limit exceeded'
+          }
+          errorMessage = message || `Error Code: ${error.status}\nMessage: ${error.message}`;
         }
-        
+                
         return throwError(errorMessage);
       })
     );

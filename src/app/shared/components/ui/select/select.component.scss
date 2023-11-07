@@ -1,0 +1,37 @@
+::ng-deep {
+  .mdc-text-field--filled {
+    @apply
+    border-2
+    border-primary-pink;
+
+    background-color: white !important;
+  }
+  .mdc-floating-label--float-above {
+    @apply
+    hidden
+  }
+
+  .mat-mdc-select {
+    @apply
+    p-0;
+
+    color: black !important;
+  }
+
+  div.mat-mdc-select-panel {
+    background-color: white !important;
+  }
+  .mat-mdc-option {
+    color: black !important;
+  }
+
+  .mat-form-field-hide-placeholder .mat-mdc-select-placeholder {
+    color: black !important;
+  }
+
+  .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined)
+  .mat-mdc-form-field-infix {
+    @apply
+    pt-0
+  }
+}

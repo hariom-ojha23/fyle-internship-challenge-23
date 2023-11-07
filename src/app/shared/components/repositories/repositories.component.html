@@ -1,32 +1,55 @@
-<div class="h-[calc(100%-100px)]" class="mt-5 mb-3" *ngIf="loading">
-  <div class="grid grid-cols-12 gap-2">
-    <div class="col-span-6" *ngFor="let item of loadingCount">
-      <app-skeleton-loader height="148px"></app-skeleton-loader>
+<div class="h-full flex flex-col justify-between">
+  <div class="h-[60px] flex items-center justify-between">
+    <h3 class="!font-medium !text-lg">Repositories</h3>
+    <app-select
+      *ngIf="repositories && repositories.length > 0"
+      class="mr-3"
+      [defaultValue]="limit"
+      [options]="options"
+      (onSelect)="onChangeLimit($event)"
+    ></app-select>
+  </div>
+
+  <div class="h-[calc(100%-60px)]" class="mt-5 mb-3" *ngIf="loading">
+    <div class="grid grid-cols-12 gap-2">
+      <div class="col-span-6" *ngFor="let item of loadingCount">
+        <app-skeleton-loader height="130px"></app-skeleton-loader>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="h-[calc(100%-100px)]" *ngIf="!loading">
-  <div *ngIf="repositories && repositories.length > 0" class="grid grid-cols-12 gap-2 repo-container-scroll h-full">
+  <div class="h-[calc(100%-140px)]" *ngIf="!loading">
     <div
-      class="col-span-12 md:col-span-6"
-      *ngFor="let repository of repositories"
+      *ngIf="repositories && repositories.length > 0"
+      class="grid grid-cols-12 gap-2 repo-container-scroll h-full"
     >
-      <app-repository-card [repository]="repository"></app-repository-card>
+      <div
+        class="col-span-12 md:col-span-6"
+        *ngFor="let repository of repositories"
+      >
+        <app-repository-card [repository]="repository"></app-repository-card>
+      </div>
+    </div>
+
+    <div
+      *ngIf="repositories && repositories.length === 0"
+      class="flex h-full w-full items-center justify-center"
+    >
+      <img
+        class="xs:w-[100%] sm:w-[70%] lg:w-[50%]"
+        src="../../../../assets/images/no-data.jpg"
+        alt="no-data"
+      />
     </div>
   </div>
 
-  <div *ngIf="repositories && repositories.length === 0" class="flex h-full w-full items-center justify-center">
-    <img class="xs:w-[100%] sm:w-[70%] lg:w-[50%]" src="../../../../assets/images/no-data.jpg" alt="no-data" />
-  </div>
+  <app-pagination
+    *ngIf="repositories && repositories.length > 0"
+    class="flex justify-center items-center h-[80px]"
+    (setPage)="setPage($event)"
+    (setStart)="setStart($event)"
+    [page]="page"
+    [start]="start"
+    [total]="getTotal()"
+  ></app-pagination>
 </div>
-
-<app-pagination
-  *ngIf="repositories && repositories.length > 0"
-  class="flex justify-center items-center h-[100px]"
-  (setPage)="setPage($event)"
-  (setStart)="setStart($event)"
-  [page]="page"
-  [start]="start"
-  [total]="getTotal()"
-></app-pagination>

@@ -1,0 +1,10 @@
+<mat-form-field class="mt-3 w-[150px] h-[70px]">
+  <mat-select [ngModel]="defaultValue" name="limit" (selectionChange)="onSelectChange($event)">
+    <mat-option
+      *ngFor="let option of options"
+      [value]="option"
+    >
+      {{ option }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

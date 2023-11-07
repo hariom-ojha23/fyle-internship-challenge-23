@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './shared/components/components.module';
 import { PagesModule } from './pages/pages.module';
 import { ErrorInterceptor } from './app.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ErrorInterceptor } from './app.interceptor';
     AppRoutingModule,
     ComponentsModule,
     PagesModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {

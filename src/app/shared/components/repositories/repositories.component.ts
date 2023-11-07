@@ -15,12 +15,15 @@ export class RepositoriesComponent implements OnInit {
   page: number = 1;
   start: number = 1;
   limit: number = 10;
+  options: number[] = []
 
   loadingCount = [1,2,3,4,5,6]
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setOptions()
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['userData'] && !changes['userData'].firstChange) {
@@ -52,7 +55,6 @@ export class RepositoriesComponent implements OnInit {
   }
 
   getTotal() {
-
     let userData = this.userData;
     let limit = this.limit;
 
@@ -65,5 +67,17 @@ export class RepositoriesComponent implements OnInit {
     }
 
     return value;
+  }
+
+  setOptions() {
+    for (let i = 1; i <= 100; i++) {
+      this.options.push(i)
+    }
+  }
+
+  onChangeLimit(value: number) {
+    this.limit = value
+
+    if (this.userData) this.fetchAllRepositories(this.page)
   }
 }

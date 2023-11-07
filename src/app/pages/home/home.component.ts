@@ -36,8 +36,8 @@ export class HomeComponent implements OnInit {
         this.recommendedUsers = data;
       },
       error: (error) => {
-        showErrorPopup('Error fetching recommended users')
-        console.error('Error fetching recommended user details:', error);
+        showErrorPopup('Error fetching recommended users.\n' + error)
+        this.loading = false
       },
       complete: () => {
         this.loading = false
@@ -57,7 +57,11 @@ export class HomeComponent implements OnInit {
 
       this.apiService.getUser(value).subscribe({
         next: (data: UserData) =>  this.searchedUser = data,
-        error: (error: any) => showErrorPopup(error.message),
+        error: (error: any) => {
+          showErrorPopup(error.message)
+          this.searching = false;
+          this.buttonLabel = 'Search';
+        },
         complete: () => {
           this.searching = false;
           this.buttonLabel = 'Search';

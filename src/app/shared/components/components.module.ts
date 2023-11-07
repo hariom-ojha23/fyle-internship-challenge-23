@@ -14,6 +14,8 @@ import { RouterModule } from '@angular/router';
 import { RepositoriesComponent } from './repositories/repositories.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonLoaderComponent } from './ui/skeleton-loader/skeleton-loader.component';
+import { SelectComponent } from './ui/select/select.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -27,14 +29,16 @@ import { SkeletonLoaderComponent } from './ui/skeleton-loader/skeleton-loader.co
         PaginationComponent,
         CardComponent,
         RepositoriesComponent,
-        SkeletonLoaderComponent
+        SkeletonLoaderComponent,
+        SelectComponent
     ],
     imports: [
         MaterialModule,
         ReactiveFormsModule,
         FormsModule,
         RouterModule.forRoot([]),
-        NgxSkeletonLoaderModule
+        NgxSkeletonLoaderModule,
+        CommonModule
     ],
     exports: [
         AppbarComponent,
