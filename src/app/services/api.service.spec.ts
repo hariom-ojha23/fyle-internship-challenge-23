@@ -17,6 +17,8 @@ import {
   getUserDetailsMockData,
   getUserMockData,
 } from '../utils/test-data';
+import { environment } from 'src/environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 describe('ApiService', () => {
   let service: ApiService;
@@ -42,6 +44,15 @@ describe('ApiService', () => {
   it('should be valid github url', () => {
     expect(service.githubUrl).toBe('https://api.github.com');
   });
+
+  it('should be valid token', () => {
+    expect(service.token).toBe(environment.token)
+  })
+
+  it('should be valid authorization header', () => {
+    const mockHeader = { Authorization: `token ${environment.token}` }
+    expect(service.headers).toEqual(mockHeader);
+  })
 
   describe('getUser', () => {
     it('should return a user', () => {
