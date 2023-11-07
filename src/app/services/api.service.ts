@@ -15,7 +15,7 @@ export class ApiService {
   githubUrl: string = environment.githubUrl;
   token: string = environment.token
 
-  headers = { Authorization: `token ${this.token}` }
+  headers = { Authorization: `token: ${this.token}` }
 
   constructor(private httpClient: HttpClient) {}
 

@@ -18,7 +18,6 @@ import {
   getUserMockData,
 } from '../utils/test-data';
 import { environment } from 'src/environments/environment';
-import { HttpHeaders } from '@angular/common/http';
 
 describe('ApiService', () => {
   let service: ApiService;
@@ -50,7 +49,7 @@ describe('ApiService', () => {
   })
 
   it('should be valid authorization header', () => {
-    const mockHeader = { Authorization: `token ${environment.token}` }
+    const mockHeader = { Authorization: `token: ${environment.token}` }
     expect(service.headers).toEqual(mockHeader);
   })
 
