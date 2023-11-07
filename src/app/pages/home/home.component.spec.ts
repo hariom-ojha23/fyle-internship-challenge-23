@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { UserData } from 'src/app/shared/types/custom-types';
 import { showErrorPopup, showWarningPopup } from 'src/app/utils/toast-mesage';
-import { getUserDetailsMockData, getUserMockData } from 'src/app/utils/test-data';
+import { getRecommendedUsersMockData, getUserDetailsMockData, getUserMockData } from 'src/app/utils/test-data';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -69,7 +69,7 @@ describe('HomeComponent', () => {
 
   // checking if recommending users are fetching on initialization
   it('should fetch recommended users on initialization', fakeAsync(() => {
-    const recommendedUsers: UserData[] = []
+    const recommendedUsers: UserData[] = getUserDetailsMockData
 
     // mock the getRecommendedUserDetails method
     spyOn(apiService, 'getRecommendedUserDetails').and.returnValue(of(recommendedUsers));
