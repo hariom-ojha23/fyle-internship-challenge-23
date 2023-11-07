@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Repository, UserData } from '../../types/custom-types';
+import { showErrorPopup } from 'src/app/utils/toast-mesage';
 
 @Component({
   selector: 'app-repositories',
@@ -39,9 +40,16 @@ export class RepositoriesComponent implements OnInit {
 
     this.apiService
       .getRepositories(this.userData.login, page, limit)
-      .subscribe((data: Repository[]) => {
-        this.repositories = data;
-        this.loading = false;
+      .subscribe({
+        next: (data: Repository[]) => {
+          this.repositories = data;
+        },
+        error: (error) => {
+          showErrorPopup('Error Fetching Repositories.\n' + error)
+        },
+        complete: () => {
+          this.loading = false
+        }
       });
   }
 

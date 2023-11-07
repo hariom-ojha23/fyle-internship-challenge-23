@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Repository } from '../../types/custom-types';
+import { showErrorPopup } from 'src/app/utils/toast-mesage';
 
 @Component({
   selector: 'app-repository-card',
@@ -23,9 +24,13 @@ export class RepositoryCardComponent implements OnInit {
 
     if (!repo) return
 
-    this.apiService.getLanguages(repo.name, repo.owner.login).subscribe((data: object) => {
-      this.languages = Object.keys(data)
-      this.loading = false
+    this.apiService.getLanguages(repo.name, repo.owner.login).subscribe({
+      next: (data: object) => {
+        this.languages = Object.keys(data)
+      },
+      complete: () => {
+        this.loading = false
+      }
     })
   }
 }

@@ -1,4 +1,4 @@
-<div class="h-full flex flex-col justify-between">
+<div class="h-full flex flex-col">
   <div class="h-[60px] flex items-center justify-between">
     <h3 class="!font-medium !text-lg">Repositories</h3>
     <app-select
@@ -10,7 +10,7 @@
     ></app-select>
   </div>
 
-  <div class="h-[calc(100%-60px)]" class="mt-5 mb-3" *ngIf="loading">
+  <div class="h-[calc(100%-60px)]" class="mt-5 mb-auto" *ngIf="loading">
     <div class="grid grid-cols-12 gap-2">
       <div class="col-span-6" *ngFor="let item of loadingCount">
         <app-skeleton-loader height="130px"></app-skeleton-loader>
