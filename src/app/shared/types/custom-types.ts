@@ -4,7 +4,7 @@ export interface UserData {
     blog: string | null
     followers: number
     following: number
-    location: string
+    location: string | null
     login: string
     name: string
     public_repos: number,
@@ -18,4 +18,8 @@ export interface Repository {
     owner: {
         login: string
     }
+}
+
+export interface GetRecommendedUserApi {
+    login: string
 }

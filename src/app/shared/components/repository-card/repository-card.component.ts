@@ -23,10 +23,9 @@ export class RepositoryCardComponent implements OnInit {
 
     if (!repo) return
 
-    this.apiService.getLanguages(repo.name, repo.owner.login).subscribe((data: string[]) => {
-      this.languages = data
+    this.apiService.getLanguages(repo.name, repo.owner.login).subscribe((data: object) => {
+      this.languages = Object.keys(data)
       this.loading = false
     })
   }
-
 }

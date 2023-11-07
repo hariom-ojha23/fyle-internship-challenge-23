@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, map, switchMap } from 'rxjs';
-import { Repository, UserData } from '../shared/types/custom-types';
+import {
+  GetRecommendedUserApi,
+  Repository,
+  UserData,
+} from '../shared/types/custom-types';
 
 @Injectable({
   providedIn: 'root',
@@ -27,26 +31,28 @@ export class ApiService {
     );
   }
 
-  getLanguages(repositoryName: string, username: string): Observable<string[]> {
-    return this.httpClient
-      .get<string[]>(
-        `${this.githubUrl}/repos/${username}/${repositoryName}/languages`,
-      )
-      .pipe(map((data: Object) => Object.keys(data)));
+  getLanguages(repositoryName: string, username: string): Observable<object> {
+    return this.httpClient.get<object>(
+      `${this.githubUrl}/repos/${username}/${repositoryName}/languages`
+    );
   }
 
-  getRecommendedUsers(): Observable<UserData[]> {
-    return this.httpClient.get<UserData[]>(`${this.githubUrl}/users`);
+  getRecommendedUsers(): Observable<GetRecommendedUserApi[]> {
+    let page = 1;
+    let limit = 6;
+
+    return this.httpClient.get<GetRecommendedUserApi[]>(
+      `${this.githubUrl}/users?page=${page}&per_page=${limit}`
+    )
   }
 
   getRecommendedUserDetails(): Observable<UserData[]> {
     return this.getRecommendedUsers().pipe(
-      switchMap((data: UserData[]) => {
-        const userLogins = data.slice(4, 10).map((user) => user.login);
+      switchMap((data: GetRecommendedUserApi[]) => {
+        const userLogins = data.map((user) => user.login);
         const details = userLogins.map((login) => this.getUser(login));
         return forkJoin(details);
       })
     );
   }
 }
-

@@ -1,0 +1,100 @@
+import { GetRecommendedUserApi, UserData } from '../shared/types/custom-types';
+
+export const getRecommendedUsersMockData: GetRecommendedUserApi[] = [
+  { login: 'mojombo' },
+  { login: 'defunkt' },
+  { login: 'pjhyett' },
+  { login: 'wycats' },
+  { login: 'ezmobius' },
+  { login: 'ivey' },
+];
+
+export const getLanguagesMockData: string[] = ['Ruby', 'CoffeeScript', 'JavaScript'];
+
+export const getUserMockData: UserData = {
+  login: 'hariom-ojha23',
+  avatar_url: 'https://avatars.githubusercontent.com/u/60937980?v=4',
+  html_url: 'https://github.com/hariom-ojha23',
+  name: 'Hari om ojha',
+  blog: 'https://www.linkedin.com/in/hari-om-ojha-0ba62419b',
+  bio: null,
+  location: 'Mayur Vihar Phase1',
+  followers: 2,
+  following: 1,
+  public_repos: 41,
+};
+
+export const getUserDetailsMockData: UserData[] = [
+  {
+    login: "mojombo",
+    avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
+    html_url: "https://github.com/mojombo",
+    name: "Tom Preston-Werner",
+    blog: "http://tom.preston-werner.com",
+    location: "San Francisco",
+    bio: null,
+    public_repos: 66,
+    followers: 23682,
+    following: 11,
+  },
+  {
+    login: "defunkt",
+    avatar_url: "https://avatars.githubusercontent.com/u/2?v=4",
+    html_url: "https://github.com/defunkt",
+    name: "Chris Wanstrath",
+    blog: "http://chriswanstrath.com/",
+    location: null,
+    bio: "🍔",
+    public_repos: 107,
+    followers: 21741,
+    following: 214,
+  },
+  {
+    login: "pjhyett",
+    avatar_url: "https://avatars.githubusercontent.com/u/3?v=4",
+    html_url: "https://github.com/pjhyett",
+    name: "PJ Hyett",
+    blog: "https://hyett.com",
+    location: "San Francisco",
+    bio: null,
+    public_repos: 8,
+    followers: 8264,
+    following: 30,
+  },
+  {
+    login: "wycats",
+    avatar_url: "https://avatars.githubusercontent.com/u/4?v=4",
+    html_url: "https://github.com/wycats",
+    name: "Yehuda Katz",
+    blog: "http://yehudakatz.com",
+    location: "Portland, OR",
+    bio: null,
+    public_repos: 282,
+    followers: 10152,
+    following: 13,
+  },
+  {
+    login: "ezmobius",
+    avatar_url: "https://avatars.githubusercontent.com/u/5?v=4",
+    html_url: "https://github.com/ezmobius",
+    name: "Ezra Zygmuntowicz",
+    blog: "http://stuffstr.com",
+    location: "In the NW",
+    bio: null,
+    public_repos: 22,
+    followers: 544,
+    following: 13,
+  },
+  {
+    login: "ivey",
+    avatar_url: "https://avatars.githubusercontent.com/u/6?v=4",
+    html_url: "https://github.com/ivey",
+    name: "Michael D. Ivey",
+    blog: "https://gweezlebur.com",
+    location: "Tuscumbia, AL",
+    bio: null,
+    public_repos: 37,
+    followers: 143,
+    following: 3,
+  }
+]

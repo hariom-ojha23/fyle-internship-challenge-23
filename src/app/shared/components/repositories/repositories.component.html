@@ -7,7 +7,7 @@
 </div>
 
 <div class="h-[calc(100%-100px)]" *ngIf="!loading">
-  <div class="grid grid-cols-12 gap-2 repo-container-scroll h-full">
+  <div *ngIf="repositories && repositories.length > 0" class="grid grid-cols-12 gap-2 repo-container-scroll h-full">
     <div
       class="col-span-12 md:col-span-6"
       *ngFor="let repository of repositories"
@@ -15,9 +15,14 @@
       <app-repository-card [repository]="repository"></app-repository-card>
     </div>
   </div>
+
+  <div *ngIf="repositories && repositories.length === 0" class="flex h-full w-full items-center justify-center">
+    <img class="xs:w-[100%] sm:w-[70%] lg:w-[50%]" src="../../../../assets/images/no-data.jpg" alt="no-data" />
+  </div>
 </div>
 
 <app-pagination
+  *ngIf="repositories && repositories.length > 0"
   class="flex justify-center items-center h-[100px]"
   (setPage)="setPage($event)"
   (setStart)="setStart($event)"

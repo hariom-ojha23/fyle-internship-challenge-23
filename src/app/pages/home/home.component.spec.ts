@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { UserData } from 'src/app/shared/types/custom-types';
 import { showErrorPopup, showWarningPopup } from 'src/app/utils/toast-mesage';
+import { getUserDetailsMockData, getUserMockData } from 'src/app/utils/test-data';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -116,4 +117,56 @@ describe('HomeComponent', () => {
   it('should have an array of loading counts', () => {
     expect(component.loadingCount).toEqual([1, 2, 3, 4, 5, 6]);
   });
+
+
+  // testing tenmplates
+
+  it('should render the input and button components', () => {
+    const inputElement = fixture.nativeElement.querySelector('app-input');
+    const buttonElement = fixture.nativeElement.querySelector('app-button');
+
+    expect(inputElement).toBeTruthy();
+    expect(buttonElement).toBeTruthy();
+  });
+
+  it('should trigger searchUsername when Enter is pressed', () => {
+    spyOn(component, 'searchUsername');
+  
+    const inputElement = fixture.nativeElement.querySelector('app-input input');
+    const event = new KeyboardEvent('keyup', { key: 'Enter' });
+    inputElement.dispatchEvent(event);
+  
+    fixture.detectChanges();
+  
+    expect(component.searchUsername).toHaveBeenCalled();
+  });
+
+  it('should render skeleton loader while searching', () => {
+    component.searching = true;
+    fixture.detectChanges();
+
+    const skeletonLoaderElement = fixture.nativeElement.querySelector('app-skeleton-loader');
+
+    expect(skeletonLoaderElement).toBeTruthy();
+  });
+
+  it('should render user card when searchedUser is present', () => {
+    component.searchedUser = getUserMockData;
+    fixture.detectChanges();
+
+    const userCardElement = fixture.nativeElement.querySelector('app-user-card');
+
+    expect(userCardElement).toBeTruthy();
+  });
+
+  it('should render recommended user cards', () => {
+    component.loading = false;
+    component.recommendedUsers = getUserDetailsMockData;
+    fixture.detectChanges();
+
+    const userCardElements = fixture.nativeElement.querySelectorAll('app-user-card');
+
+    expect(userCardElements.length).toEqual(component.recommendedUsers.length);
+  });
+
 });
