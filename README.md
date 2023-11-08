@@ -1,43 +1,33 @@
 # Fyle Frontend Challenge
 
-## Who is this for?
+**The application provides the following functionalities:**
 
-This challenge is meant for candidates who wish to intern at Fyle and work with our engineering team. The candidate should be able to commit to at least 6 months of dedicated time for internship.
+* It is a single-page application where you can search for any GitHub user using their username.
+* Upon clicking on a user, you will be directed to their profile page.
+* On the profile page, important user details are displayed on the right side (on larger screens) or at the top (on smaller screens). These details include the user's name, bio, number of followers, number of following, blog link, and GitHub profile link.
+* On the left side, the user's repositories are shown with pagination. Only 10 repositories are displayed by default.
+* At top of repositories, there is a select box where you can select maximum of 100 repositories per page.
+* Each repository is accompanied by its name, description, repository link, and the programming languages (topics) used for that repository.
 
-## Why work at Fyle?
+**You can check the deployed application [here](https://fyle-frontend-challenge.netlify.app/).**
 
-Fyle is a fast-growing Expense Management SaaS product. We are ~40 strong engineering team at the moment. 
-
-We are an extremely transparent organization. Check out our [careers page](https://careers.fylehq.com) that will give you a glimpse of what it is like to work at Fyle. Also, check out our Glassdoor reviews [here](https://www.glassdoor.co.in/Reviews/Fyle-Reviews-E1723235.htm). You can read stories from our teammates [here](https://stories.fylehq.com).
-
-## Challenge outline
-
-This challenge involves implementing application using github api. 
-
-The services that you need to use are already implemented - check out ApiService.
-
-You can see details of this challenge [here](https://fyleuniverse.notion.site/fyleuniverse/Fyle-Frontend-development-challenge-cb5085e5e0864e769e7b98c694400aaa)
-
-__Note__ - This challenge is in angular. We work on angular frameworks & after you join we expect the same from you. Hence it is required to complete this assignement in angular itself.
-
-## What happens next?
-
-You will hear back within 48 hours from us via email.
+## Steps to run and test in local system
 
 ## Installation
 
-1. Fork this repository to your github account.
-2. Clone the forked repository and proceed with steps mentioned below.
+1. Clone the repository and proceed with steps mentioned below.
 
 ### Install requirements
-* Install angular cli [Ref](https://angular.io/cli)
-* `npm install` in this repository 
+* Make sure you have Node.js and npm installed on your system. You can download them from [here](https://nodejs.org/en/download/current).
+* Install angular cli [Ref](https://angular.io/cli).
+* `npm install` in this repository.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to http://localhost:4200/.
 
-## Further help
+## Steps for unit testing
 
-Visit the [Angular Documentation](https://angular.io/guide/styleguide) to learn more.
-Styling is to be strictly done with [Tailwind](https://tailwindcss.com/docs/installation).
+* Install Chrome browser. You can download it from [here](https://www.google.com/chrome/).
+* To run unit tests, use the command: `ng test`.
+* It will open the chrome browser and redirect you to a url. There you can see the result of every test.
